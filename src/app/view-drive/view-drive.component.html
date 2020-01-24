@@ -1,0 +1,40 @@
+<br><br><br>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Company Name</th>
+            <th>Resource</th>
+            <th>Experiance</th>
+            <th>CTC</th>
+            <th>Position</th>
+            <th>Joining Criteria</th>
+            <th>Education Criteria</th>
+            <th>Follow-up</th>
+            <th>Bond</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf =" ! data || data.length == 0">
+        <td colspan="11">No Record Found !!</td>
+    </tr>
+        <tr *ngFor="let d of data">
+            <td>{{d.id}}</td>
+            <td>{{d.companyname}}</td>
+            <td>{{d.resource}}</td>
+            <td>{{d.exp}}</td>
+            <td>{{d.ctc}}</td>
+            <td>{{d.position |custpipe:d.position}}</td>
+            <td>{{d.joining |joining:d.joining}}</td>
+            <td>{{d.education |education:d.education}}</td>
+            <td>{{d.followup}}</td>
+            <td>{{d.bond}}</td>
+            <td>
+                <button type="submit" class="btn btn-primary" [routerLink]="['/edit' , d.id]">Edit</button> &nbsp;
+                <button type="submit" class="btn btn-danger" (click)="deleteData(d.id)">Delete</button>
+            </td>
+
+        </tr>
+    </tbody>
+</table>

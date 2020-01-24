@@ -1,0 +1,116 @@
+<mat-card>
+    <mat-card-title>Update-Drive Form</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="editform" (ngSubmit)="update()" class="modal-dialog modal-lg">
+        <ng-container *ngIf="singleDrive">
+          <input matInput  formControlName="id" placeholder={{singleDrive.id}}>
+
+<p>
+    <mat-form-field appearance="fill">
+      <mat-label>Company Name</mat-label>
+      <input matInput  formControlName="companyname"[(ngModel)] = "singleDrive.companyname">
+      <mat-error *ngIf="editform.get('companyname').errors?.required">
+          comapny name is required
+      </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>No.of Resources </mat-label>
+      <input matInput  formControlName="resource"[(ngModel)] = "singleDrive.resourse">
+      <mat-error *ngIf="editform.get('resource').errors?.required">
+       Resource  is required
+    </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Exp Required</mat-label>
+      <input matInput formControlName="exp"[(ngModel)] = "singleDrive.exp">
+      <mat-error *ngIf="editform.get('exp').errors?.required">
+      Exprience is required
+    </mat-error>
+     
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>CTC</mat-label>
+      <input matInput  formControlName="ctc"[(ngModel)] = "singleDrive.ctc">
+      <mat-error *ngIf="editform.get('ctc').errors?.required">
+       ctc is required
+    </mat-error>
+      </mat-form-field>
+  </p>
+<p>
+  <mat-form-field>
+    <mat-label>Select Position</mat-label>
+    <mat-select formControlName="position"[(ngModel)] = "singleDrive.position" matNativeControl required>
+      <mat-option value="0">Full stack Developer</mat-option>
+      <mat-option value="1">Ui Developer</mat-option>
+      <mat-option value="2">Middleware/Backend Developer</mat-option>
+      <mat-option value="3">Testing Engineer</mat-option>
+    </mat-select>
+    <mat-error *ngIf="editform.get('position').errors?.required">
+        Position is required
+    </mat-error>
+  </mat-form-field>
+</p>
+  <p>
+  <mat-form-field>
+    <mat-label>Select Joining Criteria</mat-label>
+    <mat-select formControlName="joining"[(ngModel)] = "singleDrive.joining" matNativeControl required>
+      <mat-option value="0">NO training direct joining</mat-option>
+      <mat-option value="1">3 month Internship then joining</mat-option>
+    </mat-select>
+    <mat-error *ngIf="editform.get('joining').errors?.required">
+        Joining field is required
+    </mat-error>
+  </mat-form-field>
+  </p>
+  <p>
+  <mat-form-field>
+   
+    <mat-label>Education Criteria</mat-label>
+    <mat-select formControlName="education"[(ngModel)] = "singleDrive.education" matNativeControl required>
+      <mat-option value="0">BE</mat-option>
+      <mat-option value="1">12TH</mat-option>
+      <mat-option value="2">Other</mat-option>
+    </mat-select>
+    <mat-error *ngIf="editform.get('education').errors?.required">
+       Education is required
+    </mat-error>
+    </mat-form-field>
+</p>
+
+      <p>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" formControlName="followup" placeholder="FollowUp date"[(ngModel)] = "singleDrive.followup">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="editform.get('followup').errors?.required">
+            FollowUp Date is required
+           </mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <mat-label>Bond</mat-label>
+          <mat-select formControlName="bond"[(ngModel)] = "singleDrive.bond" matNativeControl required>
+            <mat-option value="0">1 year</mat-option>
+            <mat-option value="1">2 year</mat-option>
+          </mat-select>
+          <mat-error *ngIf="editform.get('bond').errors?.required">
+           Bond is required
+        </mat-error>
+          </mat-form-field>
+      </p>
+    </ng-container>
+
+      <div class="button">
+    <button [disabled]="!editform.valid" type="submit"  mat-raised-button color="primary" >Update Drive</button>
+</div>
+</form>
+</mat-card-content>
+</mat-card>
